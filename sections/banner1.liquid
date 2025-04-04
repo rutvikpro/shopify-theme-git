@@ -1,0 +1,33 @@
+<div class="main-banner">
+<div>{{section.settings.title}}</div>
+
+    </div>
+
+    <style>
+        .main-banner{
+        background-image:url('');
+        }
+        </style>
+
+        {% schema %}
+        {
+        "name": "banner1",
+        "tag": "div",
+        "limit": 2,
+        "class": "banner1",
+        "settings": [
+
+            
+            {
+            "type": "text",
+            "id": "title",
+            "label": "title",
+            "default":"test text"
+            },
+            
+        ]
+        
+        }
+
+
+        {% endschema %}
