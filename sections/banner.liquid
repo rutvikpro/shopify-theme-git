@@ -1,0 +1,122 @@
+<section class="banner">
+    <div class="banner__content">
+      <h1 class="banner__title">{{ section.settings.title }}</h1>
+      <p class="banner__description">{{ section.settings.description }}</p>
+      
+      <div class="banner__buttons">
+        <a href="{{ section.settings.shop_now_link }}" class="button shop-now">{{ section.settings.shop_now_label }}</a>
+        <a href="{{ section.settings.choose_gift_link }}" class="button choose-gift">{{ section.settings.choose_gift_label }}</a>
+      </div>
+    </div>
+  
+    <div class="banner__footer">
+      <p>{{ section.settings.footer_text }}</p>
+    </div>
+  </section>
+  
+  <style>
+    .banner {
+      background-image: url('{{ section.settings.background_image | img_url: "1920x1080" }}');
+      background-size: cover;
+      background-position: center;
+      text-align: left;
+      padding: 80px;
+      color: black;
+    }
+  
+    .banner__content {
+      max-width: 600px;
+    }
+  
+    .banner__title {
+      font-size: 48px;
+      font-weight: bold;
+    }
+  
+    .banner__description {
+      font-size: 18px;
+      margin: 15px 0;
+    }
+  
+    .banner__buttons .button {
+      display: inline-block;
+      padding: 12px 24px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+  
+    .shop-now {
+      background-color: black;
+      color: white;
+    }
+  
+    .choose-gift {
+      background-color: yellow;
+      color: black;
+    }
+  
+    .banner__footer {
+      margin-top: 30px;
+      font-size: 14px;
+    }
+  </style>
+  
+  {% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background Image"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "The Gift Guide"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description",
+        "default": "Discover Joy: Your Ultimate Holiday Gift Destination."
+      },
+      {
+        "type": "url",
+        "id": "shop_now_link",
+        "label": "Shop Now Link"
+      },
+      {
+        "type": "text",
+        "id": "shop_now_label",
+        "label": "Shop Now Label",
+        "default": "Shop Now"
+      },
+      {
+        "type": "url",
+        "id": "choose_gift_link",
+        "label": "Choose Gift Link"
+      },
+      {
+        "type": "text",
+        "id": "choose_gift_label",
+        "label": "Choose Gift Label",
+        "default": "Choose Gift"
+      },
+      {
+        "type": "text",
+        "id": "footer_text",
+        "label": "Footer Text",
+        "default": "Sustainable, Ethically Made Clothes in Sizes XXS to 6XL"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Banner"
+      }
+    ]
+  }
+  {% endschema %}
+  
