@@ -1,3 +1,9 @@
+<div class="banner-top">
+<div class="logo"></div>
+<div class="text-top">{{ section.settings.banner-top }}</div>
+<div class="btn-choose"></div>
+    </div>
+
 <section class="main-banner">
 <div class="banner__content" >
     </div>
@@ -16,6 +22,7 @@
         text-align: left;
         padding: 80px;
         color: black;
+        min-height:
         }
         .banner__content {
             max-width: 600px;
@@ -25,6 +32,21 @@
           {
         background-color:lightgrey;
         color:black;
+        }
+        .logo {
+        width:33.33%;
+    }   
+    .text-top{
+        width:33.33%;
+
+    }  
+     .btn-choose
+     {        width:33.33%;
+
+    }
+        .banner-top{
+        display:flex;
+        width:100%;
         }
         </style>
 
@@ -41,6 +63,16 @@
         "id": "ip",
              "label": "image-pick"
            
+    },
+    {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Add your logo here"
+    },
+    {
+    "type": "text",
+    "id": "banner-top",
+    "label": "announcement text"
     },
             {
             "type": "text",
