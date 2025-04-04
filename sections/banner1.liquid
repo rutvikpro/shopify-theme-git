@@ -1,11 +1,13 @@
-<div class="main-banner">
+<div class="main-banner">{{ section.settings.ip }}
 <div>{{section.settings.title}}</div>
 
     </div>
 
     <style>
         .main-banner{
-        background-image:url('');
+        background-image:url('{{ section.settings. }}');
+        height:auto;
+        width:auto;
         }
         </style>
 
@@ -17,7 +19,12 @@
         "class": "banner1",
         "settings": [
 
-            
+            {
+            "type": "image_picker",
+        "id": "ip",
+             "label": "image-pick",
+           
+    },
             {
             "type": "text",
             "id": "title",
