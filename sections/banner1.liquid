@@ -5,8 +5,12 @@
 
     <style>
         .main-banner{
-        background-image:url('{{ section.settings.ip | image_url: '1024px' }}');
-
+        background-image:url('{{ section.settings.ip | image_url: "1920x1080" }}');
+        background-size: cover;
+        background-position: center;
+        text-align: left;
+        padding: 80px;
+        color: black;
         }
         </style>
 
