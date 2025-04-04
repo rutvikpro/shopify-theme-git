@@ -101,7 +101,8 @@
     "banner1_4YMXVU": {
       "type": "banner1",
       "settings": {
-        "banner-footer-text": "test text"
+        "ip": "shopify://shop_images/newbannerpfy-min.jpg",
+        "banner-footer-text": "Sustainable, Ethically Made Clothes in Sizes XXS to 6XL"
       }
     }
   },
