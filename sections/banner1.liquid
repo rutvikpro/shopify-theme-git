@@ -1,6 +1,10 @@
 <section class="main-banner">
 <div class="banner__content" >
     </div>
+    <div class="banner-footer">
+        {{ section.settings.banner-footer-text }}
+
+    </div>
 
 </section>
 
@@ -17,6 +21,11 @@
             max-width: 600px;
           }
         
+          .banner-footer
+          {
+        background-color:lightgrey;
+        color:black;
+        }
         </style>
 
         {% schema %}
@@ -35,7 +44,7 @@
     },
             {
             "type": "text",
-            "id": "title",
+            "id": "banner-footer-text",
             "label": "title",
             "default":"test text"
             },
