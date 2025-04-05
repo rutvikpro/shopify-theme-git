@@ -1,5 +1,13 @@
 <div class="banner-top">
-<div class="logo"></div>
+<div class="logo">
+    {% for block in section.blocks %}
+        <div class="block">
+          {{ block.settings.img | image_url: width: 2048 | image_tag }}
+        </div>
+      {% endfor %}
+      
+
+</div>
 <div class="text-top">{{ section.settings.banner-top }}</div>
 <div class="btn-choose"></div>
     </div>
@@ -85,7 +93,23 @@
             "default":"test text"
             },
             
+        
         ],
+        "blocks": [
+
+            {   "name":"logo",
+                "type": "logo",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "img",
+                        "label": "Upload logo"
+                    }
+                ]
+
+               
+        },
+    ],
         "presets": [
             {
             "name": "banner1",
