@@ -102,7 +102,27 @@
       "type": "banner1",
       "settings": {
         "ip": "shopify://shop_images/newbannerpfy-min.jpg",
+        "banner-top": "",
         "banner-footer-text": "Sustainable, Ethically Made Clothes in Sizes XXS to 6XL"
+      }
+    },
+    "hotspot_image_eYGV7E": {
+      "type": "hotspot-image",
+      "blocks": {
+        "hotspot_RzUktd": {
+          "type": "hotspot",
+          "settings": {
+            "product": "product-1",
+            "top": 11,
+            "left": 50
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_RzUktd"
+      ],
+      "settings": {
+        "background_image": "shopify://shop_images/IMGG-03.jpg"
       }
     }
   },
@@ -110,6 +130,7 @@
     "banner_YgaFde",
     "image_banner",
     "featured_collection",
-    "banner1_4YMXVU"
+    "banner1_4YMXVU",
+    "hotspot_image_eYGV7E"
   ]
 }
