@@ -1,0 +1,152 @@
+{% schema %}
+{
+  "name": "Product Hotspot Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hotspot",
+      "name": "Hotspot",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
+        },
+        {
+          "type": "range",
+          "id": "top",
+          "label": "Top Position (%)",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "left",
+          "label": "Left Position (%)",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [{
+    "name": "Hotspot Image"
+  }]
+}
+{% endschema %}
+
+<div class="hotspot-container" style="position: relative;">
+  {% if section.settings.background_image %}
+    <img
+      src="{{ section.settings.background_image | img_url: 'master' }}"
+      alt="Hotspot Background"
+      class="main-image"
+      style=""
+      width="100%"; height=" auto";/>
+  {% endif %}
+
+  {% for block in section.blocks %}
+    {% assign product = all_products[block.settings.product] %}
+    {% if product %}
+      <div
+        class="hotspot"
+        style="top: {{ block.settings.top }}%; left: {{ block.settings.left }}%;"
+        data-product-handle="{{ product.handle }}">
+        <span class="dot"></span>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+<div id="hotspot-popup" class="hotspot-popup">
+  <div class="popup-content">
+    <span class="close">&times;</span>
+    <div id="popup-product-content">Loading...</div>
+  </div>
+</div>
+
+<style>
+  .hotspot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .dot {
+    width: 14px;
+    height: 14px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 50%;
+    display: block;
+  }
+
+  .hotspot-popup {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hotspot-popup.active {
+    display: flex;
+  }
+
+  .popup-content {
+    background: white;
+    padding: 20px;
+    max-width: 500px;
+    border-radius: 10px;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .popup-content .close {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.hotspot').forEach(dot => {
+      dot.addEventListener('click', function () {
+        const handle = this.getAttribute('data-product-handle');
+        fetch(`/products/${handle}?view=hotspot`)
+          .then(res => res.text())
+          .then(html => {
+            document.getElementById('popup-product-content').innerHTML = html;
+            document.getElementById('hotspot-popup').classList.add('active');
+          });
+      });
+    });
+
+    document.querySelector('#hotspot-popup .close').addEventListener('click', function () {
+      document.getElementById('hotspot-popup').classList.remove('active');
+    });
+  });
+</script>

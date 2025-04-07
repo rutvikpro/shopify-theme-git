@@ -1,0 +1,7 @@
+<div class="product-hotspot-view">
+    <h2>{{ product.title }}</h2>
+    <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}">
+    <p>{{ product.description | strip_html | truncatewords: 20 }}</p>
+    <a href="{{ product.url }}" class="btn">View Product</a>
+  </div>
+  
